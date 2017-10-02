@@ -96,15 +96,30 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CasoDePrueba.cpp" />
+    <ClCompile Include="ComparacionTuplaKV.cpp" />
+    <ClCompile Include="GrafoMatrizAdy.cpp" />
+    <ClCompile Include="HashAbiertoImpl.cpp" />
+    <ClCompile Include="ListaEncadenadaImp.cpp" />
+    <ClCompile Include="ListaEncadenadaIteracion.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Sistema.cpp" />
     <ClCompile Include="SistemaTemplates.cpp" />
+    <ClCompile Include="TablaIteracion.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CasoDePrueba.h" />
+    <ClInclude Include="ComparacionTuplaKV.h" />
     <ClInclude Include="FuncionCosto.h" />
     <ClInclude Include="Grafo.h" />
+    <ClInclude Include="GrafoMatrizAdy.h" />
+    <ClInclude Include="HashAbiertoImpl.h" />
+    <ClInclude Include="ListaEncadenadaImp.h" />
+    <ClInclude Include="ListaEncadenadaIteracion.h" />
+    <ClInclude Include="ListaOrd.h" />
+    <ClInclude Include="NodoLista.h" />
     <ClInclude Include="Sistema.h" />
+    <ClInclude Include="Tabla.h" />
+    <ClInclude Include="TablaIteracion.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
