@@ -22,6 +22,12 @@
     <Filter Include="Obligatorio\Tads\Grafo">
       <UniqueIdentifier>{f75a0631-90c2-4558-bba8-19426074971e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Obligatorio\Tads\Hash\Abierto">
+      <UniqueIdentifier>{821b456c-4f0d-4d0d-b0e2-c11428c559e5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Obligatorio\Tads\Hash\Cerrado">
+      <UniqueIdentifier>{18730aea-ba94-4d17-83f9-d0fe0ea6fea1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CasoDePrueba.cpp">
@@ -36,23 +42,29 @@
     <ClCompile Include="main.cpp">
       <Filter>Obligatorio</Filter>
     </ClCompile>
-    <ClCompile Include="HashAbiertoImpl.cpp">
-      <Filter>Obligatorio\Tads\Hash</Filter>
-    </ClCompile>
     <ClCompile Include="ListaEncadenadaImp.cpp">
       <Filter>Obligatorio\Tads\Lista</Filter>
     </ClCompile>
     <ClCompile Include="ListaEncadenadaIteracion.cpp">
       <Filter>Obligatorio\Tads\Lista</Filter>
     </ClCompile>
-    <ClCompile Include="TablaIteracion.cpp">
-      <Filter>Obligatorio\Tads\Hash</Filter>
-    </ClCompile>
     <ClCompile Include="GrafoMatrizAdy.cpp">
       <Filter>Obligatorio\Tads\Grafo</Filter>
     </ClCompile>
     <ClCompile Include="ComparacionTuplaKV.cpp">
       <Filter>Obligatorio\Tads\Hash</Filter>
+    </ClCompile>
+    <ClCompile Include="HashAbiertoImpl.cpp">
+      <Filter>Obligatorio\Tads\Hash\Abierto</Filter>
+    </ClCompile>
+    <ClCompile Include="TablaIteracion.cpp">
+      <Filter>Obligatorio\Tads\Hash\Abierto</Filter>
+    </ClCompile>
+    <ClCompile Include="HashCerradoImpl.cpp">
+      <Filter>Obligatorio\Tads\Hash\Cerrado</Filter>
+    </ClCompile>
+    <ClCompile Include="HashCerradoIteracion.cpp">
+      <Filter>Obligatorio\Tads\Hash\Cerrado</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -68,9 +80,6 @@
     <ClInclude Include="Tabla.h">
       <Filter>Obligatorio\Tads\Hash</Filter>
     </ClInclude>
-    <ClInclude Include="HashAbiertoImpl.h">
-      <Filter>Obligatorio\Tads\Hash</Filter>
-    </ClInclude>
     <ClInclude Include="ListaEncadenadaImp.h">
       <Filter>Obligatorio\Tads\Lista</Filter>
     </ClInclude>
@@ -83,9 +92,6 @@
     <ClInclude Include="NodoLista.h">
       <Filter>Obligatorio\Tads\Lista</Filter>
     </ClInclude>
-    <ClInclude Include="TablaIteracion.h">
-      <Filter>Obligatorio\Tads\Hash</Filter>
-    </ClInclude>
     <ClInclude Include="GrafoMatrizAdy.h">
       <Filter>Obligatorio\Tads\Grafo</Filter>
     </ClInclude>
@@ -94,6 +100,18 @@
     </ClInclude>
     <ClInclude Include="ComparacionTuplaKV.h">
       <Filter>Obligatorio\Tads\Hash</Filter>
+    </ClInclude>
+    <ClInclude Include="HashAbiertoImpl.h">
+      <Filter>Obligatorio\Tads\Hash\Abierto</Filter>
+    </ClInclude>
+    <ClInclude Include="TablaIteracion.h">
+      <Filter>Obligatorio\Tads\Hash\Abierto</Filter>
+    </ClInclude>
+    <ClInclude Include="HashCerradoImpl.h">
+      <Filter>Obligatorio\Tads\Hash\Cerrado</Filter>
+    </ClInclude>
+    <ClInclude Include="HashCerradoIteracion.h">
+      <Filter>Obligatorio\Tads\Hash\Cerrado</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
