@@ -3,6 +3,7 @@
 #include "Grafo.h"
 #include "HashCerradoImpl.h"
 #include "NodoGrafo.h"
+#include "ListaEncadenada.h"
 
 template <class V, class A>
 class GrafoListaAdy : public Grafo<V, A>
@@ -12,13 +13,15 @@ public:
 	GrafoListaAdy(nat maxVertices, Puntero<FuncionHash<V>> func, const Comparador<V>& comp);
 	~GrafoListaAdy() {}
 
+	void AgregarVertice(const V& v) override;
+
 private:
 	//Estructuras
-	Array<Lista<NodoGrafo<V, A>>> lGrafo; // Lista de adyacencias
+	Array<Tupla<V, Puntero<Lista<NodoGrafo<V, A>>>>> lGrafo; // Lista de adyacencias
 	Puntero<Tabla<V, nat>> hashVertices; // para acceder al mappeo vertice -> nat 
 	Array<V> arrVertices;// Para acceder nat -> vertice
 	
-	Puntero<FuncionHash<V>> fHash; 
+	// Puntero<FuncionHash<V>> fHash; 
 	const Comparador<V> compVertice;
 	int tope;
 	
