@@ -25,21 +25,21 @@ public:
 	Iterador<V> Incidentes(const V& v) const override;
 
 	const A& ObtenerArco(const V& v1, const V& v2) const override;
-	virtual nat CantidadVertices() const abstract;
-	virtual nat CantidadArcos() const abstract;
-	virtual nat CantidadAdyacentes(const V& v) const abstract;
-	virtual nat CantidadIncidentes(const V& v) const abstract;
+	nat CantidadVertices() const override;
+	nat CantidadArcos() const override;
+	nat CantidadAdyacentes(const V& v) const override;
+	nat CantidadIncidentes(const V& v) const override;
 
-	virtual bool ExisteVertice(const V& v) const abstract;
-	virtual bool ExisteArco(const V& v1, const V& v2) const abstract;
-	virtual bool EstaLleno() const abstract;
-	virtual bool EstaVacio() const abstract;
+	bool ExisteVertice(const V& v) const override;
+	bool ExisteArco(const V& v1, const V& v2) const override;
+	bool EstaLleno() const override;
+	bool EstaVacio() const override;
 
-	virtual bool HayCamino(const V& vO, const V& vD) const abstract;
-	virtual	TipoConexo EsConexo() const abstract;
-	virtual	Iterador<V> OrdenTopologico() const abstract;
-	virtual Iterador<Tupla<V, V>> ArbolCubrimientoMinimo(const FuncionCosto<V, A>& costo = FuncionCosto<V, A>::Default) const abstract;
-	virtual Iterador<Iterador<V>> ComponentesConexas() const abstract;
+	bool HayCamino(const V& vO, const V& vD) const override;
+	TipoConexo EsConexo() const override;
+	Iterador<V> OrdenTopologico() const override;
+	Iterador<Tupla<V, V>> ArbolCubrimientoMinimo(const FuncionCosto<V, A>& costo = FuncionCosto<V, A>::Default) const override;
+	Iterador<Iterador<V>> ComponentesConexas() const override;
 
 private:
 	//Estructuras
