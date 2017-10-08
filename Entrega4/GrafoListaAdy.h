@@ -16,6 +16,30 @@ public:
 	void AgregarVertice(const V& v) override;
 	void BorrarVertice(const V& v) override;
 	void AgregarArco(const V& v1, const V& v2, const A& arco) override;
+	void BorrarArco(const V& v1, const V& v2) override;
+
+	// SELECTORAS y PREDICADOS
+
+	Iterador<V> Vertices() const override;
+	Iterador<V> Adyacentes(const V& v) const override;
+	Iterador<V> Incidentes(const V& v) const override;
+
+	const A& ObtenerArco(const V& v1, const V& v2) const override;
+	virtual nat CantidadVertices() const abstract;
+	virtual nat CantidadArcos() const abstract;
+	virtual nat CantidadAdyacentes(const V& v) const abstract;
+	virtual nat CantidadIncidentes(const V& v) const abstract;
+
+	virtual bool ExisteVertice(const V& v) const abstract;
+	virtual bool ExisteArco(const V& v1, const V& v2) const abstract;
+	virtual bool EstaLleno() const abstract;
+	virtual bool EstaVacio() const abstract;
+
+	virtual bool HayCamino(const V& vO, const V& vD) const abstract;
+	virtual	TipoConexo EsConexo() const abstract;
+	virtual	Iterador<V> OrdenTopologico() const abstract;
+	virtual Iterador<Tupla<V, V>> ArbolCubrimientoMinimo(const FuncionCosto<V, A>& costo = FuncionCosto<V, A>::Default) const abstract;
+	virtual Iterador<Iterador<V>> ComponentesConexas() const abstract;
 
 private:
 	//Estructuras
@@ -36,6 +60,9 @@ private:
 	// Pre: Existe un V con posicion pos
 	// Pos: Devuelve una referencia al vertice en la posicion "pos"
 	const V& GetVertice(const nat pos) const;
+
+	Puntero<Lista<NodoGrafo<V, A>>> GetListaAdyacencias(const V &v) const;
+	Puntero<Lista<NodoGrafo<V, A>>> GetListaAdyacencias(const nat pos) const;
 };
 #include "GrafoListaAdy.cpp"
 

@@ -15,8 +15,7 @@ CompRetorno ComparacionNodoGrafo<V, A>::Comparar(const NodoGrafo<V, A>& t1, cons
 {
 	if (compV.SonIguales(t1.v1,t2.v1) && compV.SonIguales(t1.v2,t2.v2))
 	{
-		if (t1.costo == t2.costo)
-			return IGUALES;
+		return IGUALES;
 	}
 	return DISTINTOS;
 }

@@ -78,7 +78,9 @@
     <ClCompile Include="NodoGrafo.cpp">
       <Filter>Obligatorio\Tads\Grafo</Filter>
     </ClCompile>
-    <ClCompile Include="ComparacionNodoGrafo.cpp" />
+    <ClCompile Include="ComparacionNodoGrafo.cpp">
+      <Filter>Obligatorio\Tads\Grafo</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CasoDePrueba.h">
@@ -138,6 +140,8 @@
     <ClInclude Include="NodoGrafo.h">
       <Filter>Obligatorio\Tads\Grafo</Filter>
     </ClInclude>
-    <ClInclude Include="ComparacionNodoGrafo.h" />
+    <ClInclude Include="ComparacionNodoGrafo.h">
+      <Filter>Obligatorio\Tads\Grafo</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
