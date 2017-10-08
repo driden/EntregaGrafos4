@@ -60,3 +60,4 @@ _ReSharper*/
 packages/
 **/Debug
 *db
+*.txt
