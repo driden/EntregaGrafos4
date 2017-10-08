@@ -1,9 +1,9 @@
 #pragma once
 
 #include "Grafo.h"
-#include "HashCerradoImpl.h"
 #include "NodoGrafo.h"
 #include "ListaEncadenada.h"
+#include "Tabla.h"
 
 template <class V, class A>
 class GrafoListaAdy : public Grafo<V, A>
@@ -14,6 +14,8 @@ public:
 	~GrafoListaAdy() {}
 
 	void AgregarVertice(const V& v) override;
+	void BorrarVertice(const V& v) override;
+	void AgregarArco(const V& v1, const V& v2, const A& arco) override;
 
 private:
 	//Estructuras

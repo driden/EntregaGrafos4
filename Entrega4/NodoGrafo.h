@@ -5,11 +5,13 @@ template <class V, class A>
 class NodoGrafo
 {
 public:
-	NodoGrafo();
-	~NodoGrafo();
-private:
-	V vertice;
+	NodoGrafo(const V &v1,const V &v2, const A &arista, const nat peso );
+	~NodoGrafo(){}
+//private:
+	V v1;
+	V v2;
 	A arista;
 	nat costo;
 };
+#include "NodoGrafo.cpp"
 

@@ -72,12 +72,13 @@
     <ClCompile Include="ListaEncadenadaIteracion.cpp">
       <Filter>Obligatorio\Tads\Lista\Ordenada</Filter>
     </ClCompile>
-    <ClCompile Include="NodoGrafo.cpp">
-      <Filter>Obligatorio\Tads\Lista</Filter>
-    </ClCompile>
     <ClCompile Include="GrafoListaAdy.cpp">
       <Filter>Obligatorio\Tads\Grafo</Filter>
     </ClCompile>
+    <ClCompile Include="NodoGrafo.cpp">
+      <Filter>Obligatorio\Tads\Grafo</Filter>
+    </ClCompile>
+    <ClCompile Include="ComparacionNodoGrafo.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CasoDePrueba.h">
@@ -131,11 +132,12 @@
     <ClInclude Include="NodoLista.h">
       <Filter>Obligatorio\Tads\Lista\Ordenada</Filter>
     </ClInclude>
-    <ClInclude Include="NodoGrafo.h">
-      <Filter>Obligatorio\Tads\Lista</Filter>
-    </ClInclude>
     <ClInclude Include="GrafoListaAdy.h">
       <Filter>Obligatorio\Tads\Grafo</Filter>
     </ClInclude>
+    <ClInclude Include="NodoGrafo.h">
+      <Filter>Obligatorio\Tads\Grafo</Filter>
+    </ClInclude>
+    <ClInclude Include="ComparacionNodoGrafo.h" />
   </ItemGroup>
 </Project>

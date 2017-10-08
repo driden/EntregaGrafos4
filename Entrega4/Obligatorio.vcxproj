@@ -96,6 +96,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CasoDePrueba.cpp" />
+    <ClCompile Include="ComparacionNodoGrafo.cpp" />
     <ClCompile Include="ComparacionTuplaKV.cpp" />
     <ClCompile Include="GrafoListaAdy.cpp" />
     <ClCompile Include="HashAbiertoImpl.cpp" />
@@ -112,6 +113,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CasoDePrueba.h" />
+    <ClInclude Include="ComparacionNodoGrafo.h" />
     <ClInclude Include="ComparacionTuplaKV.h" />
     <ClInclude Include="FuncionCosto.h" />
     <ClInclude Include="Grafo.h" />
