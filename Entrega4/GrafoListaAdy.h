@@ -4,7 +4,7 @@
 #include "NodoGrafo.h"
 #include "ListaEncadenada.h"
 #include "Tabla.h"
-
+#include "TablaDijkstra.h"
 template <class V, class A>
 class GrafoListaAdy : public Grafo<V, A>
 {
@@ -35,6 +35,7 @@ public:
 	bool EstaLleno() const override;
 	bool EstaVacio() const override;
 
+
 	bool HayCamino(const V& vO, const V& vD) const override;
 	TipoConexo EsConexo() const override;
 	Iterador<V> OrdenTopologico() const override;
@@ -63,6 +64,7 @@ private:
 
 	Puntero<Lista<NodoGrafo<V, A>>> GetListaAdyacencias(const V &v) const;
 	Puntero<Lista<NodoGrafo<V, A>>> GetListaAdyacencias(const nat pos) const;
+	Array<TablaDijkstra<V,A>> Dijkstra(const V& vO, const V& vD) const;
 };
 #include "GrafoListaAdy.cpp"
 

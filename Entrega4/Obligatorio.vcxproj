@@ -98,6 +98,7 @@
     <ClCompile Include="CasoDePrueba.cpp" />
     <ClCompile Include="ComparacionNodoGrafo.cpp" />
     <ClCompile Include="ComparacionTuplaKV.cpp" />
+    <ClCompile Include="CPBinaryHeap.cpp" />
     <ClCompile Include="GrafoListaAdy.cpp" />
     <ClCompile Include="HashAbiertoImpl.cpp" />
     <ClCompile Include="HashCerradoImpl.cpp" />
@@ -109,12 +110,15 @@
     <ClCompile Include="NodoGrafo.cpp" />
     <ClCompile Include="Sistema.cpp" />
     <ClCompile Include="SistemaTemplates.cpp" />
+    <ClCompile Include="TablaDijkstra.cpp" />
     <ClCompile Include="TablaIteracion.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CasoDePrueba.h" />
+    <ClInclude Include="ColaPrioridadExtendida.h" />
     <ClInclude Include="ComparacionNodoGrafo.h" />
     <ClInclude Include="ComparacionTuplaKV.h" />
+    <ClInclude Include="CPBinaryHeap.h" />
     <ClInclude Include="FuncionCosto.h" />
     <ClInclude Include="Grafo.h" />
     <ClInclude Include="GrafoListaAdy.h" />
@@ -131,6 +135,7 @@
     <ClInclude Include="NodoLista.h" />
     <ClInclude Include="Sistema.h" />
     <ClInclude Include="Tabla.h" />
+    <ClInclude Include="TablaDijkstra.h" />
     <ClInclude Include="TablaIteracion.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

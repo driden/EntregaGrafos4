@@ -34,6 +34,9 @@
     <Filter Include="Obligatorio\Tads\Lista\Al Final">
       <UniqueIdentifier>{2fedee87-57e4-4251-8365-48886bc5df5d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Obligatorio\Tads\PQ Extendida">
+      <UniqueIdentifier>{879a7e04-3b7f-439a-b02e-2cad46821036}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CasoDePrueba.cpp">
@@ -79,6 +82,12 @@
       <Filter>Obligatorio\Tads\Grafo</Filter>
     </ClCompile>
     <ClCompile Include="ComparacionNodoGrafo.cpp">
+      <Filter>Obligatorio\Tads\Grafo</Filter>
+    </ClCompile>
+    <ClCompile Include="CPBinaryHeap.cpp">
+      <Filter>Obligatorio\Tads\PQ Extendida</Filter>
+    </ClCompile>
+    <ClCompile Include="TablaDijkstra.cpp">
       <Filter>Obligatorio\Tads\Grafo</Filter>
     </ClCompile>
   </ItemGroup>
@@ -141,6 +150,15 @@
       <Filter>Obligatorio\Tads\Grafo</Filter>
     </ClInclude>
     <ClInclude Include="ComparacionNodoGrafo.h">
+      <Filter>Obligatorio\Tads\Grafo</Filter>
+    </ClInclude>
+    <ClInclude Include="ColaPrioridadExtendida.h">
+      <Filter>Obligatorio\Tads\PQ Extendida</Filter>
+    </ClInclude>
+    <ClInclude Include="CPBinaryHeap.h">
+      <Filter>Obligatorio\Tads\PQ Extendida</Filter>
+    </ClInclude>
+    <ClInclude Include="TablaDijkstra.h">
       <Filter>Obligatorio\Tads\Grafo</Filter>
     </ClInclude>
   </ItemGroup>

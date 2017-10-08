@@ -1,12 +1,13 @@
-#include "ComparacionNodoGrafo.h"
-#include <locale>
 #ifndef GRAFO_MATRIZ_ADY_CPP
 #define GRAFO_MATRIZ_ADY_CPP
 
 #include "GrafoListaAdy.h"
 #include "ListaEncadenada.h"
 #include "HashAbiertoImpl.h"
-
+#include "ComparacionNodoGrafo.h"
+#include <locale>
+#include "TablaDijkstra.h"
+#include "CPBinaryHeap.h"
 template <class V, class A>
 GrafoListaAdy<V, A>::GrafoListaAdy(nat maxVertices, Puntero<FuncionHash<V>> func, const Comparador<V>& comp)
 	:compVertice(comp)
@@ -290,8 +291,18 @@ bool GrafoListaAdy<V, A>::EstaVacio() const
 }
 
 template <class V, class A>
+Array<TablaDijkstra<V,A>> GrafoListaAdy<V, A>::Dijkstra(const V& vO, const V& vD) const
+{
+	Array<TablaDijkstra<V, A>> tabla(tope + 1);
+
+
+
+}
+
+template <class V, class A>
 bool GrafoListaAdy<V, A>::HayCamino(const V& vO, const V& vD) const
 {
+
 	return false;
 }
 
