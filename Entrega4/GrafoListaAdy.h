@@ -37,6 +37,7 @@ public:
 
 
 	bool HayCamino(const V& vO, const V& vD) const override;
+	
 	TipoConexo EsConexo() const override;
 	Iterador<V> OrdenTopologico() const override;
 	Iterador<Tupla<V, V>> ArbolCubrimientoMinimo(const FuncionCosto<V, A>& costo = FuncionCosto<V, A>::Default) const override;
@@ -65,6 +66,7 @@ private:
 	Puntero<Lista<NodoGrafo<V, A>>> GetListaAdyacencias(const V &v) const;
 	Puntero<Lista<NodoGrafo<V, A>>> GetListaAdyacencias(const nat pos) const;
 	Array<TablaDijkstra<V,A>> Dijkstra(const V& vO, const V& vD, Array<TablaDijkstra<V, A>> tabla) const;
+	void ComponentesConexas(Array<bool> visitados, int vActual) const;
 };
 #include "GrafoListaAdy.cpp"
 

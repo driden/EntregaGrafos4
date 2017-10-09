@@ -13,10 +13,10 @@ GrafoListaAdy<V, A>::GrafoListaAdy(nat maxVertices, Puntero<FuncionHash<V>> func
 	:compVertice(comp)
 {
 	tope = -1;
-	
-	lGrafo = Array<Tupla<V,Puntero<Lista<NodoGrafo<V, A>>>>>(maxVertices);
-	hashVertices = new HashAbiertoImpl<V, nat>(func,maxVertices * 2,comp);
-	arrVertices = Array<V>(maxVertices, V());	
+
+	lGrafo = Array<Tupla<V, Puntero<Lista<NodoGrafo<V, A>>>>>(maxVertices);
+	hashVertices = new HashAbiertoImpl<V, nat>(func, maxVertices * 2, comp);
+	arrVertices = Array<V>(maxVertices, V());
 	fHash = func;
 }
 
@@ -53,7 +53,7 @@ void GrafoListaAdy<V, A>::AgregarVertice(const V& v)
 {
 	tope++;
 	arrVertices[tope] = v;
-	hashVertices->Agregar(v,tope);
+	hashVertices->Agregar(v, tope);
 	Puntero<Lista<NodoGrafo<V, A>>> lista = nullptr;
 	Tupla<V, Puntero<Lista<NodoGrafo<V, A>>>>t(v, lista);
 	lGrafo[tope] = t;
@@ -75,7 +75,7 @@ void GrafoListaAdy<V, A>::BorrarVertice(const V& v)
 
 	//Sacarlo del grafo
 	BorrarDeArray(lGrafo, posV, tope);
-	
+
 	//Sacarlo del array de vertices
 	BorrarDeArray(arrVertices, posV, tope);
 
@@ -96,8 +96,8 @@ void GrafoListaAdy<V, A>::AgregarArco(const V& v1, const V& v2, const A& arco)
 	{
 		Puntero<ComparacionNodoGrafo<V, A>> comparacion = new ComparacionNodoGrafo<V, A>(compVertice);
 		Comparador<NodoGrafo<V, A>> comp = Comparador<NodoGrafo<V, A>>(comparacion);
-		Puntero<Lista<NodoGrafo<V,A>>> lAdy = new ListaEncadenada<NodoGrafo<V, A>>(comp);
-		
+		Puntero<Lista<NodoGrafo<V, A>>> lAdy = new ListaEncadenada<NodoGrafo<V, A>>(comp);
+
 		nat posV = GetPosVertice(v1);
 		lGrafo[posV].Dato2 = lAdy;
 
@@ -144,7 +144,7 @@ Iterador<V> GrafoListaAdy<V, A>::Adyacentes(const V& v) const
 	}
 
 	Array<V> arrayAdyacentes(tope + 1);
-	Array<V>::Copiar(ady,0,tope+1, arrayAdyacentes,0);
+	Array<V>::Copiar(ady, 0, tope + 1, arrayAdyacentes, 0);
 
 	return arrayAdyacentes.ObtenerIterador();
 }
@@ -154,7 +154,7 @@ Iterador<V> GrafoListaAdy<V, A>::Incidentes(const V& v) const
 {
 	Puntero<Lista<V>> incidentes = new ListaEncadenada<V>(compVertice);
 
-	for (int i = 0 ; i < tope; i++)
+	for (int i = 0; i < tope; i++)
 	{
 		if (compVertice.SonIguales(lGrafo[i].Dato1, v))
 			continue;
@@ -164,7 +164,7 @@ Iterador<V> GrafoListaAdy<V, A>::Incidentes(const V& v) const
 		if (adyacentes == nullptr) continue;
 		Iterador<NodoGrafo<V, A>> iterador = adyacentes->ObtenerIterador();
 
-		while(iterador.HayElemento())
+		while (iterador.HayElemento())
 		{
 			NodoGrafo<V, A> nodo = iterador.ElementoActual();
 			if (compVertice.SonIguales(v, nodo.v2))
@@ -205,7 +205,7 @@ template <class V, class A>
 nat GrafoListaAdy<V, A>::CantidadArcos() const
 {
 	nat total = 0;
-	for(int i = 0; i < tope; i++)
+	for (int i = 0; i < tope; i++)
 	{
 		Puntero<Lista<NodoGrafo<V, A>>> adyacentes = GetListaAdyacencias(i);
 		if (adyacentes == nullptr) continue;
@@ -252,7 +252,7 @@ nat GrafoListaAdy<V, A>::CantidadIncidentes(const V& v) const
 template <class V, class A>
 bool GrafoListaAdy<V, A>::ExisteVertice(const V& v) const
 {
-	for(int i = 0; i < tope + 1 ; i++)
+	for (int i = 0; i < tope + 1; i++)
 	{
 		if (compVertice.SonIguales(v, arrVertices[i])) return true;
 	}
@@ -292,7 +292,7 @@ bool GrafoListaAdy<V, A>::EstaVacio() const
 }
 
 template <class V, class A>
-Array<TablaDijkstra<V,A>> GrafoListaAdy<V, A>::Dijkstra(const V& vO, const V& vD, Array<TablaDijkstra<V, A>> tabla) const
+Array<TablaDijkstra<V, A>> GrafoListaAdy<V, A>::Dijkstra(const V& vO, const V& vD, Array<TablaDijkstra<V, A>> tabla) const
 {
 	const nat iVO = GetPosVertice(vO);
 	tabla[iVO].conocido = true;
@@ -302,7 +302,7 @@ Array<TablaDijkstra<V,A>> GrafoListaAdy<V, A>::Dijkstra(const V& vO, const V& vD
 
 	pq->InsertarConPrioridad(vO, 0);
 
-	while(!pq->EstaVacia())
+	while (!pq->EstaVacia())
 	{
 		const V vActual = pq->ObtenerElementoMayorPrioridad();
 		pq->EliminarElementoMayorPrioridad();
@@ -312,7 +312,7 @@ Array<TablaDijkstra<V,A>> GrafoListaAdy<V, A>::Dijkstra(const V& vO, const V& vD
 
 		Iterador<V> iterAdy = Adyacentes(vActual);
 
-		while(iterAdy.HayElemento())
+		while (iterAdy.HayElemento())
 		{
 			V w = iterAdy.ElementoActual();
 			iterAdy.Avanzar();
@@ -320,7 +320,7 @@ Array<TablaDijkstra<V,A>> GrafoListaAdy<V, A>::Dijkstra(const V& vO, const V& vD
 			const nat posW = GetPosVertice(w);
 			if (tabla[posW].conocido) continue;
 			A arco = ObtenerArco(vActual, w);
-			if(tabla[posW].costo > tabla[posicion].costo + arco)
+			if (tabla[posW].costo > tabla[posicion].costo + arco)
 			{
 				tabla[posW].costo = tabla[posicion].costo + arco;
 				tabla[posW].vengo = vActual;
@@ -346,20 +346,75 @@ bool GrafoListaAdy<V, A>::HayCamino(const V& vO, const V& vD) const
 	nat posO = GetPosVertice(vO);
 	nat posActual = posD;
 	nat cantidadMov = 0;
-	
-	while (tabla[posActual].conocido && compVertice.SonDistintos(vO,tabla[posActual].vengo) && cantidadMov < lGrafo.Largo )
+
+	while (tabla[posActual].conocido && compVertice.SonDistintos(vO, tabla[posActual].vengo) && cantidadMov < lGrafo.Largo)
 	{
 		posActual = GetPosVertice(tabla[posActual].vengo);
 		cantidadMov++;
 	}
 
-	return compVertice.SonIguales(vO, tabla[posActual].vengo);	
+	return compVertice.SonIguales(vO, tabla[posActual].vengo);
+}
+
+template <class V, class A>
+void GrafoListaAdy<V, A>::ComponentesConexas(Array<bool> visitados, int vActual) const
+{
+	visitados[vActual] = true;
+
+	const V v = GetVertice(vActual);
+
+	Iterador<V> adyacentes = Adyacentes(v);
+
+	while (adyacentes.HayElemento())
+	{
+		V w = adyacentes.ElementoActual();
+		adyacentes.Avanzar();
+
+		nat wPos = GetPosVertice(w);
+
+		if (!visitados[wPos])
+			ComponentesConexas(visitados, wPos);
+	}
 }
 
 template <class V, class A>
 TipoConexo GrafoListaAdy<V, A>::EsConexo() const
 {
-	return NO_CONEXO;
+
+	Array<bool> visitados(tope + 1);
+	int cantidadCompConexas = 0;
+	for (int i = 0; i < tope; i++)
+	{
+		if (!visitados[i])
+		{
+			cantidadCompConexas++;
+			ComponentesConexas(visitados, i);
+		}
+	}
+
+
+	bool esConexo = cantidadCompConexas == 1;
+
+	if (!esConexo) return NO_CONEXO;
+
+	for (int i = 0; i < tope - 1; i++)
+	{
+		for (int k = i + 1; k < tope; k++)
+		{
+			nat posO = i;
+			nat posD = tope - k;
+
+			if (posO == posD) continue;
+
+			V vO = GetVertice(posO);
+			V vD = GetVertice(posD);
+
+			if (!HayCamino(vO, vD) || !HayCamino(vD, vO))
+				return DEBILMENTE_CONEXO;
+		}		
+	}
+
+	return FUERTEMENTE_CONEXO;
 }
 
 template <class V, class A>
