@@ -17,6 +17,7 @@ GrafoListaAdy<V, A>::GrafoListaAdy(nat maxVertices, Puntero<FuncionHash<V>> func
 	lGrafo = Array<Tupla<V,Puntero<Lista<NodoGrafo<V, A>>>>>(maxVertices);
 	hashVertices = new HashAbiertoImpl<V, nat>(func,maxVertices * 2,comp);
 	arrVertices = Array<V>(maxVertices, V());	
+	fHash = func;
 }
 
 template <class V, class A>
@@ -291,19 +292,68 @@ bool GrafoListaAdy<V, A>::EstaVacio() const
 }
 
 template <class V, class A>
-Array<TablaDijkstra<V,A>> GrafoListaAdy<V, A>::Dijkstra(const V& vO, const V& vD) const
+Array<TablaDijkstra<V,A>> GrafoListaAdy<V, A>::Dijkstra(const V& vO, const V& vD, Array<TablaDijkstra<V, A>> tabla) const
 {
-	Array<TablaDijkstra<V, A>> tabla(tope + 1);
+	const nat iVO = GetPosVertice(vO);
+	tabla[iVO].conocido = true;
+	tabla[iVO].costo = 0;
+
+	Puntero<ColaPrioridadExtendida<V, A>> pq = new CPBinaryHeap<V, A>(compVertice, Comparador<A>::Default, fHash);
+
+	pq->InsertarConPrioridad(vO, 0);
+
+	while(!pq->EstaVacia())
+	{
+		const V vActual = pq->ObtenerElementoMayorPrioridad();
+		pq->EliminarElementoMayorPrioridad();
+
+		nat posicion = GetPosVertice(vActual);
+		tabla[posicion].conocido = true;
+
+		Iterador<V> iterAdy = Adyacentes(vActual);
+
+		while(iterAdy.HayElemento())
+		{
+			V w = iterAdy.ElementoActual();
+			iterAdy.Avanzar();
+
+			const nat posW = GetPosVertice(w);
+			if (tabla[posW].conocido) continue;
+			A arco = ObtenerArco(vActual, w);
+			if(tabla[posW].costo > tabla[posicion].costo + arco)
+			{
+				tabla[posW].costo = tabla[posicion].costo + arco;
+				tabla[posW].vengo = vActual;
+			}
+
+			pq->InsertarConPrioridad(w, arco);
+		}
+	}
 
 
+	return tabla;
 
 }
 
 template <class V, class A>
 bool GrafoListaAdy<V, A>::HayCamino(const V& vO, const V& vD) const
 {
+	Array<TablaDijkstra<V, A>> tabla(tope + 1);
 
-	return false;
+	tabla = Dijkstra(vO, vD, tabla);
+
+	nat posD = GetPosVertice(vD);
+	nat posO = GetPosVertice(vO);
+	nat posActual = posD;
+	nat cantidadMov = 0;
+	
+	while (tabla[posActual].conocido && compVertice.SonDistintos(vO,tabla[posActual].vengo) && cantidadMov < lGrafo.Largo )
+	{
+		posActual = GetPosVertice(tabla[posActual].vengo);
+		cantidadMov++;
+	}
+
+	return compVertice.SonIguales(vO, tabla[posActual].vengo);	
 }
 
 template <class V, class A>

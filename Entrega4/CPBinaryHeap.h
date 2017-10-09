@@ -13,9 +13,7 @@ private:
 	Array<Tupla<T, P>> copia;
 	Comparador<T> compElementos;
 	Comparador<P> compPrioridades;
-	Puntero<FuncionHash<T>> fHash;
-
-	Utils utils;
+	Puntero<FuncionHash<T>> fHash;	
 
 	// PRE: -
 	// POS: Devuelve la posicion en el heap de e, o 0 si no esta

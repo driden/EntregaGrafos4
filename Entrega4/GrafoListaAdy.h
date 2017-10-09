@@ -47,7 +47,7 @@ private:
 	Array<Tupla<V, Puntero<Lista<NodoGrafo<V, A>>>>> lGrafo; // Lista de adyacencias
 	Puntero<Tabla<V, nat>> hashVertices; // para acceder al mappeo vertice -> nat 
 	Array<V> arrVertices;// Para acceder nat -> vertice
-	
+	Puntero<FuncionHash<V>> fHash;
 	// Puntero<FuncionHash<V>> fHash; 
 	const Comparador<V> compVertice;
 	int tope;
@@ -64,7 +64,7 @@ private:
 
 	Puntero<Lista<NodoGrafo<V, A>>> GetListaAdyacencias(const V &v) const;
 	Puntero<Lista<NodoGrafo<V, A>>> GetListaAdyacencias(const nat pos) const;
-	Array<TablaDijkstra<V,A>> Dijkstra(const V& vO, const V& vD) const;
+	Array<TablaDijkstra<V,A>> Dijkstra(const V& vO, const V& vD, Array<TablaDijkstra<V, A>> tabla) const;
 };
 #include "GrafoListaAdy.cpp"
 
