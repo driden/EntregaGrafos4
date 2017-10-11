@@ -493,13 +493,64 @@ void GrafoListaAdy<V, A>::CargarAristas(Puntero<ColaPrioridadExtendida<Tupla<V, 
 }
 
 template <class V, class A>
+nat GrafoListaAdy<V, A>::ComponenteConexa(Array<int> cc, const V &v) const
+{
+	const nat i = GetPosVertice(v);
+	return cc[i];
+}
+
+template <class V, class A>
+void GrafoListaAdy<V, A>::RefrescarComponentes(Array<int> cc, nat vO, nat vD) const
+{
+	nat ccVd = cc[vD];
+
+	for (nat i = 0; i < cc.Largo; i++)
+		if (cc[i] == ccVd) cc[i] = cc[vO];
+}
+
+template <class V, class A>
+void GrafoListaAdy<V, A>::MergeComponenteConexa(Array<int> cc, const V &v1, const V &v2) const
+{
+	const nat vO = GetPosVertice(v1);
+	const nat vD = GetPosVertice(v2);
+
+	RefrescarComponentes(cc, vO, vD);
+	//cc[vD] = vO;
+}
+
+template <class V, class A>
 Iterador<Tupla<V, V>> GrafoListaAdy<V, A>::ArbolCubrimientoMinimo(const FuncionCosto<V, A>& costo) const
 {
-	Array<Tupla<V, V>> arrVV(1);
 	Puntero<ColaPrioridadExtendida<Tupla<V, V>, nat>> pq;
 	CargarAristas(pq);
+	Puntero<ComparacionTuplaVV<V>> cTupla = new ComparacionTuplaVV<V>(compVertice);
+	Comparador<Tupla<V, V>> comTVV(cTupla);
+	Puntero<Lista<Tupla<V, V>>> listaTuplas = new ListaEncadenada<Tupla<V, V>>(comTVV);
+	Array<int> componenteConexa(tope+1);
+	for (nat k = 0; k < componenteConexa.Largo; k++)
+		componenteConexa[k] = k; // Cada vertice tiene su propia componente conexa
+	
+	nat cont = 0;
 
-	return arrVV.ObtenerIterador();
+	while (!pq->EstaVacia() && cont < arrVertices.Largo-1)
+	{
+		Tupla<V, V> tVV = pq->ObtenerElementoMayorPrioridad();
+		pq->EliminarElementoMayorPrioridad();
+
+		V v1 = tVV.Dato1;
+		V v2 = tVV.Dato2;
+
+		// Si no genera ciclo
+		if (ComponenteConexa(componenteConexa, v1) != ComponenteConexa(componenteConexa, v2))
+		{
+			MergeComponenteConexa(componenteConexa,v1, v2);
+			cont++;
+			listaTuplas->Insertar(tVV);
+		}
+			
+	}
+
+	return listaTuplas->ObtenerIterador();
 }
 
 template <class V, class A>

@@ -42,7 +42,6 @@ public:
 	TipoConexo EsConexo() const override;
 	
 	Iterador<V> OrdenTopologico() const override;
-	
 
 	Iterador<Tupla<V, V>> ArbolCubrimientoMinimo(const FuncionCosto<V, A>& costo = FuncionCosto<V, A>::Default) const override;
 	Iterador<Iterador<V>> ComponentesConexas() const override;
@@ -88,6 +87,12 @@ private:
 	void OrdenTopologicoDFS(Array<bool> visitados, int v, Array<V> stack, int &topeStack) const;
 
 	void CargarAristas(Puntero<ColaPrioridadExtendida<Tupla<V, V>, unsigned>>& pq) const;
+	nat ComponenteConexa(Array<int> cc, const V& v) const;
+	void RefrescarComponentes(Array<int> cc, nat vO, nat vD) const;
+
+
+
+	void MergeComponenteConexa(Array<int> cc, const V& v1, const V& v2) const;
 };
 #include "GrafoListaAdy.cpp"
 
