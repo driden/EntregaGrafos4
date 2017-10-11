@@ -98,6 +98,7 @@
     <ClCompile Include="CasoDePrueba.cpp" />
     <ClCompile Include="ComparacionNodoGrafo.cpp" />
     <ClCompile Include="ComparacionTuplaKV.cpp" />
+    <ClCompile Include="ComparacionTuplaVV.cpp" />
     <ClCompile Include="CPBinaryHeap.cpp" />
     <ClCompile Include="GrafoListaAdy.cpp" />
     <ClCompile Include="HashAbiertoImpl.cpp" />
@@ -118,6 +119,7 @@
     <ClInclude Include="ColaPrioridadExtendida.h" />
     <ClInclude Include="ComparacionNodoGrafo.h" />
     <ClInclude Include="ComparacionTuplaKV.h" />
+    <ClInclude Include="ComparacionTuplaVV.h" />
     <ClInclude Include="CPBinaryHeap.h" />
     <ClInclude Include="FuncionCosto.h" />
     <ClInclude Include="Grafo.h" />

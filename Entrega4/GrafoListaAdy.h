@@ -5,6 +5,7 @@
 #include "ListaEncadenada.h"
 #include "Tabla.h"
 #include "TablaDijkstra.h"
+#include "CPBinaryHeap.h"
 template <class V, class A>
 class GrafoListaAdy : public Grafo<V, A>
 {
@@ -41,6 +42,8 @@ public:
 	TipoConexo EsConexo() const override;
 	
 	Iterador<V> OrdenTopologico() const override;
+	
+
 	Iterador<Tupla<V, V>> ArbolCubrimientoMinimo(const FuncionCosto<V, A>& costo = FuncionCosto<V, A>::Default) const override;
 	Iterador<Iterador<V>> ComponentesConexas() const override;
 
@@ -82,7 +85,9 @@ private:
 
 	// Pre: v es la posicion de un Vertice en el arreglo de vertices del grafo
 	// Pos: Se aplica, en DFS, el algoritmo de ordenamiento topologico del grafo
-	void OrdenTopologicoDFS(Array<bool> visitados, int v, Array<V> stack, int topeStack) const;
+	void OrdenTopologicoDFS(Array<bool> visitados, int v, Array<V> stack, int &topeStack) const;
+
+	void CargarAristas(Puntero<ColaPrioridadExtendida<Tupla<V, V>, unsigned>>& pq) const;
 };
 #include "GrafoListaAdy.cpp"
 

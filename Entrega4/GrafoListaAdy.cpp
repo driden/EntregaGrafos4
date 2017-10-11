@@ -1,3 +1,5 @@
+
+
 #ifndef GRAFO_MATRIZ_ADY_CPP
 #define GRAFO_MATRIZ_ADY_CPP
 
@@ -5,9 +7,8 @@
 #include "ListaEncadenada.h"
 #include "HashAbiertoImpl.h"
 #include "ComparacionNodoGrafo.h"
-#include <locale>
 #include "TablaDijkstra.h"
-#include "CPBinaryHeap.h"
+#include "ComparacionTuplaVV.h"
 template <class V, class A>
 GrafoListaAdy<V, A>::GrafoListaAdy(nat maxVertices, Puntero<FuncionHash<V>> func, const Comparador<V>& comp)
 	:compVertice(comp)
@@ -411,21 +412,21 @@ TipoConexo GrafoListaAdy<V, A>::EsConexo() const
 
 			if (!HayCamino(vO, vD) || !HayCamino(vD, vO))
 				return DEBILMENTE_CONEXO;
-		}		
+		}
 	}
 
 	return FUERTEMENTE_CONEXO;
 }
 
 template <class V, class A>
-void GrafoListaAdy<V, A>::OrdenTopologicoDFS(Array<bool> visitados, int v, Array<V> stack, int topeStack) const
+void GrafoListaAdy<V, A>::OrdenTopologicoDFS(Array<bool> visitados, int v, Array<V> stack, int &topeStack) const
 {
 	if (visitados[v]) return;
 
 	visitados[v] = true;
 	V vActual = GetVertice(v);
-	
-	foreach(V vertice , Adyacentes(vActual))
+
+	foreach(V vertice, Adyacentes(vActual))
 	{
 		int pos = GetPosVertice(vertice);
 		OrdenTopologicoDFS(visitados, pos, stack, topeStack);
@@ -438,23 +439,66 @@ void GrafoListaAdy<V, A>::OrdenTopologicoDFS(Array<bool> visitados, int v, Array
 template <class V, class A>
 Iterador<V> GrafoListaAdy<V, A>::OrdenTopologico() const
 {
-	Array<bool> visitados(arrVertices.Largo, false);
+	Array<bool> visitados(tope + 1, false);
 	Array<V> stack(visitados.Largo);
-	int tope = -1;
+	int stack_tope = -1;
 
-	for(int i = 0 ; i < visitados.Largo; i ++)
+	for (nat i = 0; i < visitados.Largo; i++)
 	{
 		if (!visitados[i])
-			OrdenTopologicoDFS(visitados, i, stack, tope);
-	}	
+			OrdenTopologicoDFS(visitados, i, stack, stack_tope);
+	}
 
-	return stack.ObtenerIterador();
+	assert(tope == stack.Largo - 1);
+
+	// Hay que dar vuelta el stack para que el iterador devuelva las cosas en orden
+
+	nat largo = stack.Largo;
+	Array<V> stackEnOrden(largo);
+
+	for (int i = 0; i < stack_tope + 1; i++)
+		stackEnOrden[i] = stack[stack_tope - i];
+	return stackEnOrden.ObtenerIterador();
+}
+
+template <class V, class A>
+void GrafoListaAdy<V, A>::CargarAristas(Puntero<ColaPrioridadExtendida<Tupla<V, V>, nat>> &pq) const
+{
+	Puntero<ComparacionTuplaVV<V>> cTupla = new ComparacionTuplaVV<V>(compVertice);
+	Comparador<Tupla<V, V>> comTVV(cTupla);
+
+	pq =
+		new CPBinaryHeap<Tupla<V, V>, nat>(
+			comTVV,
+			Comparador<nat>::Default,
+			nullptr);
+	Puntero<Lista<NodoGrafo<V, A>>> adyacencias;
+	//Ordeno todas las aristas
+	for (int i = 0; i<tope; i++)
+	{
+		V vO = GetVertice(i);
+		adyacencias = GetListaAdyacencias(vO);
+		if (!adyacencias) continue;
+		Iterador<NodoGrafo<V, A>> iterNodoGrafo = adyacencias->ObtenerIterador();
+
+		while (iterNodoGrafo.HayElemento())
+		{
+			NodoGrafo<V, A> nodo = iterNodoGrafo.ElementoActual();
+			nat c = nodo.arista;
+			Tupla<V, V> t(vO, nodo.v2);
+			pq->InsertarConPrioridad(t, c);
+			iterNodoGrafo.Avanzar();
+		}
+	}
 }
 
 template <class V, class A>
 Iterador<Tupla<V, V>> GrafoListaAdy<V, A>::ArbolCubrimientoMinimo(const FuncionCosto<V, A>& costo) const
 {
 	Array<Tupla<V, V>> arrVV(1);
+	Puntero<ColaPrioridadExtendida<Tupla<V, V>, nat>> pq;
+	CargarAristas(pq);
+
 	return arrVV.ObtenerIterador();
 }
 

@@ -90,6 +90,9 @@
     <ClCompile Include="TablaDijkstra.cpp">
       <Filter>Obligatorio\Tads\Grafo</Filter>
     </ClCompile>
+    <ClCompile Include="ComparacionTuplaVV.cpp">
+      <Filter>Obligatorio\Tads\PQ Extendida</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CasoDePrueba.h">
@@ -160,6 +163,9 @@
     </ClInclude>
     <ClInclude Include="TablaDijkstra.h">
       <Filter>Obligatorio\Tads\Grafo</Filter>
+    </ClInclude>
+    <ClInclude Include="ComparacionTuplaVV.h">
+      <Filter>Obligatorio\Tads\PQ Extendida</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
