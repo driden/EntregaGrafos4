@@ -39,6 +39,7 @@ public:
 	bool HayCamino(const V& vO, const V& vD) const override;
 	
 	TipoConexo EsConexo() const override;
+	
 	Iterador<V> OrdenTopologico() const override;
 	Iterador<Tupla<V, V>> ArbolCubrimientoMinimo(const FuncionCosto<V, A>& costo = FuncionCosto<V, A>::Default) const override;
 	Iterador<Iterador<V>> ComponentesConexas() const override;
@@ -63,10 +64,25 @@ private:
 	// Pos: Devuelve una referencia al vertice en la posicion "pos"
 	const V& GetVertice(const nat pos) const;
 
+	// Pre: v es un vertice del Grafo
+	// Pos: devuelve la lista de vertices Adyacentes a v
 	Puntero<Lista<NodoGrafo<V, A>>> GetListaAdyacencias(const V &v) const;
+	
+	// Pre: pos es la posicion de un vertice en el arreglo de vertices
+	// Pos: devuelve la lista de vertices Adyacentes a v
 	Puntero<Lista<NodoGrafo<V, A>>> GetListaAdyacencias(const nat pos) const;
+	
+	// Pre: los vertices vO y vD existen en el grafo
+	// Pos: se aplica el agloritmo de dijkstra para encontrar el camino mas corto entre ambos vertices
 	Array<TablaDijkstra<V,A>> Dijkstra(const V& vO, const V& vD, Array<TablaDijkstra<V, A>> tabla) const;
+	
+	// Pre: vActual es la posicion un vertice del Grafo en el arrgelo de vertices
+	// Pos: Marca como visitados todos los vertices a los que puede acceder desde el vActual
 	void ComponentesConexas(Array<bool> visitados, int vActual) const;
+
+	// Pre: v es la posicion de un Vertice en el arreglo de vertices del grafo
+	// Pos: Se aplica, en DFS, el algoritmo de ordenamiento topologico del grafo
+	void OrdenTopologicoDFS(Array<bool> visitados, int v, Array<V> stack, int topeStack) const;
 };
 #include "GrafoListaAdy.cpp"
 

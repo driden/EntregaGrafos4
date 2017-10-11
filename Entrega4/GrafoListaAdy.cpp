@@ -418,9 +418,37 @@ TipoConexo GrafoListaAdy<V, A>::EsConexo() const
 }
 
 template <class V, class A>
+void GrafoListaAdy<V, A>::OrdenTopologicoDFS(Array<bool> visitados, int v, Array<V> stack, int topeStack) const
+{
+	if (visitados[v]) return;
+
+	visitados[v] = true;
+	V vActual = GetVertice(v);
+	
+	foreach(V vertice , Adyacentes(vActual))
+	{
+		int pos = GetPosVertice(vertice);
+		OrdenTopologicoDFS(visitados, pos, stack, topeStack);
+	}
+
+	// Cuando no tiene hijos lo agrego al stack
+	stack[++topeStack] = vActual;
+}
+
+template <class V, class A>
 Iterador<V> GrafoListaAdy<V, A>::OrdenTopologico() const
 {
-	return arrVertices.ObtenerIterador();
+	Array<bool> visitados(arrVertices.Largo, false);
+	Array<V> stack(visitados.Largo);
+	int tope = -1;
+
+	for(int i = 0 ; i < visitados.Largo; i ++)
+	{
+		if (!visitados[i])
+			OrdenTopologicoDFS(visitados, i, stack, tope);
+	}	
+
+	return stack.ObtenerIterador();
 }
 
 template <class V, class A>
