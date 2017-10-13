@@ -57,7 +57,7 @@ T CPBinaryHeap<T, P>::EliminarElementoMayorPrioridad()
 	SwapHeap(1, tope);
 	tope--;
 
-	for (nat i = 1; compPrioridades.EsMayor(heap[i].Dato2, heap[i * 2].Dato2) && i < tope / 2; i *= 2)
+	for (nat i = 1; compPrioridades.EsMayor(heap[i].Dato2, heap[i * 2].Dato2) && i <= tope / 2; i *= 2)
 	{
 		posMin = i * 2;
 
