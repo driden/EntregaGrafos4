@@ -86,7 +86,7 @@ private:
 	// Pos: Se aplica, en DFS, el algoritmo de ordenamiento topologico del grafo
 	void OrdenTopologicoDFS(Array<bool> visitados, int v, Array<V> stack, int &topeStack) const;
 
-	void CargarAristas(Puntero<ColaPrioridadExtendida<Tupla<V, V>, unsigned>>& pq) const;
+	void CargarAristas(Puntero<ColaPrioridadExtendida<Tupla<V, V>, unsigned>>& pq, const FuncionCosto<V, A>& costo) const;
 	nat ComponenteConexa(Array<int> cc, const V& v) const;
 	void RefrescarComponentes(Array<int> cc, nat vO, nat vD) const;
 

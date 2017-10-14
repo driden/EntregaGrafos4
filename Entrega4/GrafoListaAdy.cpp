@@ -9,6 +9,7 @@
 #include "ComparacionNodoGrafo.h"
 #include "TablaDijkstra.h"
 #include "ComparacionTuplaVV.h"
+
 template <class V, class A>
 GrafoListaAdy<V, A>::GrafoListaAdy(nat maxVertices, Puntero<FuncionHash<V>> func, const Comparador<V>& comp)
 	:compVertice(comp)
@@ -462,7 +463,7 @@ Iterador<V> GrafoListaAdy<V, A>::OrdenTopologico() const
 }
 
 template <class V, class A>
-void GrafoListaAdy<V, A>::CargarAristas(Puntero<ColaPrioridadExtendida<Tupla<V, V>, nat>> &pq) const
+void GrafoListaAdy<V, A>::CargarAristas(Puntero<ColaPrioridadExtendida<Tupla<V, V>, nat>> &pq, const FuncionCosto<V, A>& costo) const
 {
 	Puntero<ComparacionTuplaVV<V>> cTupla = new ComparacionTuplaVV<V>(compVertice);
 	Comparador<Tupla<V, V>> comTVV(cTupla);
@@ -486,7 +487,7 @@ void GrafoListaAdy<V, A>::CargarAristas(Puntero<ColaPrioridadExtendida<Tupla<V, 
 			NodoGrafo<V, A> nodo = iterNodoGrafo.ElementoActual();
 			nat c = nodo.arista;
 			Tupla<V, V> t(vO, nodo.v2);
-			pq->InsertarConPrioridad(t, c);
+			pq->InsertarConPrioridad(t, costo(vO,nodo.v2, c));
 			iterNodoGrafo.Avanzar();
 		}
 	}
@@ -522,7 +523,7 @@ template <class V, class A>
 Iterador<Tupla<V, V>> GrafoListaAdy<V, A>::ArbolCubrimientoMinimo(const FuncionCosto<V, A>& costo) const
 {
 	Puntero<ColaPrioridadExtendida<Tupla<V, V>, nat>> pq;
-	CargarAristas(pq);
+	CargarAristas(pq, costo);
 	Puntero<ComparacionTuplaVV<V>> cTupla = new ComparacionTuplaVV<V>(compVertice);
 	Comparador<Tupla<V, V>> comTVV(cTupla);
 	Puntero<Lista<Tupla<V, V>>> listaTuplas = new ListaEncadenada<Tupla<V, V>>(comTVV);
