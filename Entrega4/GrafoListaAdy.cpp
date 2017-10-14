@@ -530,7 +530,7 @@ Iterador<Tupla<V, V>> GrafoListaAdy<V, A>::ArbolCubrimientoMinimo(const FuncionC
 	Array<int> componenteConexa(tope+1);
 	for (nat k = 0; k < componenteConexa.Largo; k++)
 		componenteConexa[k] = k; // Cada vertice tiene su propia componente conexa
-	
+	Array<bool> visitado(tope + 1,false);
 	nat cont = 0;
 
 	while (!pq->EstaVacia() && cont < arrVertices.Largo-1)
@@ -540,13 +540,14 @@ Iterador<Tupla<V, V>> GrafoListaAdy<V, A>::ArbolCubrimientoMinimo(const FuncionC
 
 		V v1 = tVV.Dato1;
 		V v2 = tVV.Dato2;
-
+		nat posV2 = GetPosVertice(v2);
 		// Si no genera ciclo
-		if (ComponenteConexa(componenteConexa, v1) != ComponenteConexa(componenteConexa, v2))
+		if (!visitado[posV2] && ComponenteConexa(componenteConexa, v1) != ComponenteConexa(componenteConexa, v2))
 		{
 			MergeComponenteConexa(componenteConexa,v1, v2);
 			cont++;
 			listaTuplas->Insertar(tVV);
+			visitado[posV2] = true;
 		}
 			
 	}
