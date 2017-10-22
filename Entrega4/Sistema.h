@@ -32,7 +32,7 @@ public:
 	Tupla<TipoRetorno, Iterador<Cadena>> CaminoMenosParadasIntermedias(const Cadena &ciudadOrigen, const Cadena &ciudadDestino);
 	Tupla<TipoRetorno, Iterador<Cadena>> CaminoMasBaratoOminbus(const Cadena &ciudadOrigen, const Cadena &ciudadDestino);
 private:
-	
+	Puntero<Grafo<Cadena, Tupla<nat, nat>>> grafo;
 };
 
 #include "SistemaTemplates.cpp"

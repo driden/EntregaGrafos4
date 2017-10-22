@@ -93,6 +93,9 @@
     <ClCompile Include="ComparacionTuplaVV.cpp">
       <Filter>Obligatorio\Tads\PQ Extendida</Filter>
     </ClCompile>
+    <ClCompile Include="ComparacionCosto.cpp">
+      <Filter>Obligatorio\Implementacion</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CasoDePrueba.h">
@@ -166,6 +169,9 @@
     </ClInclude>
     <ClInclude Include="ComparacionTuplaVV.h">
       <Filter>Obligatorio\Tads\PQ Extendida</Filter>
+    </ClInclude>
+    <ClInclude Include="ComparacionCosto.h">
+      <Filter>Obligatorio\Implementacion</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

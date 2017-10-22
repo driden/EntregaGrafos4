@@ -2,9 +2,11 @@
 #define SISTEMA_CPP
 
 #include "Sistema.h"
+#include "GrafoListaAdy.h"
 
 Sistema::Sistema(nat MAX_CIUDADES)
 {
+
 }
 Sistema::~Sistema()
 {

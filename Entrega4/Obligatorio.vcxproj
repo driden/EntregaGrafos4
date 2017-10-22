@@ -96,6 +96,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CasoDePrueba.cpp" />
+    <ClCompile Include="ComparacionCosto.cpp" />
     <ClCompile Include="ComparacionNodoGrafo.cpp" />
     <ClCompile Include="ComparacionTuplaKV.cpp" />
     <ClCompile Include="ComparacionTuplaVV.cpp" />
@@ -117,6 +118,7 @@
   <ItemGroup>
     <ClInclude Include="CasoDePrueba.h" />
     <ClInclude Include="ColaPrioridadExtendida.h" />
+    <ClInclude Include="ComparacionCosto.h" />
     <ClInclude Include="ComparacionNodoGrafo.h" />
     <ClInclude Include="ComparacionTuplaKV.h" />
     <ClInclude Include="ComparacionTuplaVV.h" />

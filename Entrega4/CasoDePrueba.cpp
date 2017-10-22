@@ -28,7 +28,7 @@ void CasoDePrueba::CorrerPruebaConcreta()
 	Prueba4TADGrafo();
 	Prueba5TADGrafoA();
 	Prueba5TADGrafoB();
-	/*Prueba6TADGrafo();
+	Prueba6TADGrafo();
 	Prueba1Ej2();
 	Prueba2Ej2();
 	Prueba3Ej2();
@@ -36,7 +36,7 @@ void CasoDePrueba::CorrerPruebaConcreta()
 	Prueba5Ej2();
 	Prueba6Ej2();
 	Prueba7Ej2();
-	Prueba8Ej2();*/
+	Prueba8Ej2();
 }
 
 void CasoDePrueba::Verificar(TipoRetorno obtenido, TipoRetorno esperado, Cadena comentario)
