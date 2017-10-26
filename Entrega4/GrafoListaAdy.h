@@ -46,6 +46,14 @@ public:
 	Iterador<Tupla<V, V>> ArbolCubrimientoMinimo(const FuncionCosto<V, A>& costo = FuncionCosto<V, A>::Default) const override;
 	Iterador<Iterador<V>> ComponentesConexas() const override;
 
+	// Pre: existe vertice V en el grafo
+	// Pos: devuelve el natural que ocupa el Vertice en el hash
+	const nat GetPosVertice(const V &v) const override;
+
+	// Pre: Existe un V con posicion pos
+	// Pos: Devuelve una referencia al vertice en la posicion "pos"
+	const V& GetVertice(const nat pos) const override;
+
 private:
 	//Estructuras
 	Array<Tupla<V, Puntero<Lista<NodoGrafo<V, A>>>>> lGrafo; // Lista de adyacencias
@@ -58,13 +66,7 @@ private:
 	
 	// Funciones
 
-	// Pre: existe vertice V en el grafo
-	// Pos: devuelve el natural que ocupa el Vertice en el hash
-	const nat GetPosVertice(const V &v) const;
 
-	// Pre: Existe un V con posicion pos
-	// Pos: Devuelve una referencia al vertice en la posicion "pos"
-	const V& GetVertice(const nat pos) const;
 
 	// Pre: v es un vertice del Grafo
 	// Pos: devuelve la lista de vertices Adyacentes a v

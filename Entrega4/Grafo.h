@@ -111,6 +111,14 @@ public:
 	//		Una componente conexa se representará como un Iterador de los vértices que
 	//		pertenecen a dicha componente.
 	virtual Iterador<Iterador<V>> ComponentesConexas() const abstract;
+
+	// Pre: existe vertice V en el grafo
+	// Pos: devuelve el natural que ocupa el Vertice en el hash
+	virtual const nat GetPosVertice(const V &v) const abstract;
+
+	// Pre: Existe un V con posicion pos
+	// Pos: Devuelve una referencia al vertice en la posicion "pos"
+	virtual const V& GetVertice(const nat pos) const abstract;
 };
 
 #endif
