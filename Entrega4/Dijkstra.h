@@ -34,7 +34,7 @@ public:
 	}
 	~Dijkstra(){}
 
-	TablaAlgoritmo<V,Costo> CaminoMasCorto(V origen, V destino);
+	void CaminoMasCorto(V origen, V destino);
 
 private:
 	Array<TablaAlgoritmo<V, Costo>> tabla;

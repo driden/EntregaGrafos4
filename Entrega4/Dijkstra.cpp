@@ -30,7 +30,7 @@ void Dijkstra<V,A, Costo>::InicializarTabla(V origen)
 
 
 template <class V, class A, class Costo>
-TablaAlgoritmo<V, Costo> Dijkstra<V,A, Costo>::CaminoMasCorto(V origen, V destino)
+void Dijkstra<V, A, Costo>::CaminoMasCorto(V origen, V destino)
 {
 	Puntero<ColaPrioridadExtendida<V, Costo>> pq = new CPBinaryHeap<V, Costo>(compVertice, compCosto, fHash);
 	Costo costo = Costo();
@@ -42,27 +42,34 @@ TablaAlgoritmo<V, Costo> Dijkstra<V,A, Costo>::CaminoMasCorto(V origen, V destin
 		const V vActual = pq->ObtenerElementoMayorPrioridad();
 		pq->EliminarElementoMayorPrioridad();
 
-		nat posicion = GetPosVertice(vActual);
+		nat posicion = grafo->GetPosVertice(vActual);
 		tabla[posicion].conocido = true;
 
-		Iterador<V> iterAdy = Adyacentes(vActual);
+		Iterador<V> iterAdy = grafo->Adyacentes(vActual);
 
 		while (iterAdy.HayElemento())
 		{
 			V w = iterAdy.ElementoActual();
 			iterAdy.Avanzar();
 
-			const nat posW = GetPosVertice(w);
+			const nat posW = grafo->GetPosVertice(w);
 			if (tabla[posW].conocido) continue;
-			A arco = ObtenerArco(vActual, w);
-			if (tabla[posW].costo > tabla[posicion].costo + arco)
+
+			int actual = grafo->GetPosVertice(vActual);
+			int ady = grafo->GetPosVertice(w);
+			Costo costoEntrevertices = CalcularCosto(grafo, actual, ady);
+			
+
+			//Usar comparador
+			if (tabla[posW].costo > tabla[posicion].costo + costoEntrevertices)
 			{
-				tabla[posW].costo = tabla[posicion].costo + arco;
+				tabla[posW].costo = tabla[posicion].costo + costoEntrevertices;
 				tabla[posW].vengo = vActual;
 			}
 
-			pq->InsertarConPrioridad(w, arco);
+			pq->InsertarConPrioridad(w, costoEntrevertices);
 		}
+	}
 }
 
 
