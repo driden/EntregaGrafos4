@@ -3,9 +3,11 @@
 #include "GrafoListaAdy.h"
 #include "CostoArco.h"
 
+
 template <class V, class Costo>
 class TablaAlgoritmo
 {
+public:
 	TablaAlgoritmo(const V &vengoDe, const Costo costoArco);
 	TablaAlgoritmo();
 	~TablaAlgoritmo() {}
@@ -24,7 +26,7 @@ public:
 		Comparador<Costo> c,
 		Comparador<V> cv,
 		Puntero<FuncionHash<V>> funcHash,
-		Costo(*fCosto)(Puntero <Grafo<V, Costo>>, int, int)
+		Costo(*fCosto)(Puntero <Grafo<V, A>>, int, int)
 	)
 	{
 		grafo = g;
@@ -41,12 +43,13 @@ private:
 	Puntero <Grafo<V, A>> grafo;
 	Comparador<Costo> compCosto;
 	Comparador<V> compVertice;
-	Costo(*CalcularCosto)(Puntero <Grafo<V, Costo>>, int, int);
+	Costo(*CalcularCosto)(Puntero <Grafo<V, A>>, int, int);
 	Puntero<FuncionHash<V>> fHash;
 
 	void InicializarTabla(V origen);
 	void AlgoritmoDijkstra(V origen);
 };
+
 
 #include "Dijkstra.cpp"
 

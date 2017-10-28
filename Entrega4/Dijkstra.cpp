@@ -59,8 +59,6 @@ void Dijkstra<V, A, Costo>::AlgoritmoDijkstra(V origen)
 			int ady = grafo->GetPosVertice(w);
 			Costo costoEntrevertices = CalcularCosto(grafo, actual, ady);
 
-
-			//Usar comparador
 			if (compCosto.EsMayor(tabla[posW].costo, tabla[posicion].costo + costoEntrevertices))
 			{
 				tabla[posW].costo = tabla[posicion].costo + costoEntrevertices;
@@ -75,6 +73,7 @@ void Dijkstra<V, A, Costo>::AlgoritmoDijkstra(V origen)
 template <class V, class A, class Costo>
 Iterador<V> Dijkstra<V, A, Costo>::CaminoMasCorto(V origen, V destino)
 {
+	InicializarTabla(origen);
 	AlgoritmoDijkstra(origen);
 
 	nat posDes = grafo->GetPosVertice(destino);
@@ -82,21 +81,29 @@ Iterador<V> Dijkstra<V, A, Costo>::CaminoMasCorto(V origen, V destino)
 	assert(tabla[posDes].conocido);
 
 	Array<V> caminoInvertido(grafo->CantidadVertices());
-	caminoInvertido[0] = destino;
-	int tope = 1;
 	
-	for(;tope<caminoInvertido.Largo -1; tope++)
+	Puntero<Lista<V>> listaCamino = new ListaEncadenada<V>(compVertice);
+	
+	listaCamino->Insertar(destino);
+
+	V vVengo = tabla[posDes].vengo;
+	while (compVertice.SonDistintos(origen,vVengo))
 	{
-		V vVengo = tabla[tope].vengo;
-		caminoInvertido[tope] = vVengo;
-		if (compVertice.SonIguales(origen, vVengo)) break;
+		vVengo = tabla[posDes].vengo;
+		listaCamino->Insertar(vVengo);
+		posDes = grafo->GetPosVertice(vVengo);
 	}
-
-	Array<V> caminoMasCorto(tope + 1);
-
-	for (int i = 0; i < caminoMasCorto.Largo; i++)
-		caminoMasCorto[i] = caminoInvertido[tope - i];
-	return caminoInvertido.ObtenerIterador();
+	
+	//listaCamino->Insertar(origen);
+	nat largo = listaCamino->Largo();
+	Array<V> arr(largo);
+	Iterador<V> iter = listaCamino->ObtenerIterador();
+	for(nat i = 0; i < largo; i++)
+	{
+		arr[largo - i -1] = iter.ElementoActual(); 
+		iter.Avanzar();
+	}
+	return arr.ObtenerIterador();
 }
 
 

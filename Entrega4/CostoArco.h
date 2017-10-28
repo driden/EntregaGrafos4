@@ -7,6 +7,7 @@
 class CostoArco
 {
 public:
+	CostoArco();
 	CostoArco(int avion,int bus, int costo, int tiempo, int paradas);
 	~CostoArco();
 
@@ -20,7 +21,6 @@ public:
 		return ret;
 	}
 	
-private:
 	int costo, tiempo, paradas,aviones,omnibuses;
 	
 };

@@ -95,7 +95,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CadenaHash.cpp" />
     <ClCompile Include="CasoDePrueba.cpp" />
+    <ClCompile Include="ComparacionCostoMasBarato.cpp" />
     <ClCompile Include="ComparacionNodoGrafo.cpp" />
     <ClCompile Include="ComparacionTuplaKV.cpp" />
     <ClCompile Include="ComparacionTuplaVV.cpp" />
@@ -103,6 +105,7 @@
     <ClCompile Include="CostoNat.cpp" />
     <ClCompile Include="CPBinaryHeap.cpp" />
     <ClCompile Include="Dijkstra.cpp" />
+    <ClCompile Include="Funciones.cpp" />
     <ClCompile Include="GrafoListaAdy.cpp" />
     <ClCompile Include="HashAbiertoImpl.cpp" />
     <ClCompile Include="HashCerradoImpl.cpp" />
@@ -118,8 +121,10 @@
     <ClCompile Include="TablaIteracion.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CadenaHash.h" />
     <ClInclude Include="CasoDePrueba.h" />
     <ClInclude Include="ColaPrioridadExtendida.h" />
+    <ClInclude Include="ComparacionCostoMasBarato.h" />
     <ClInclude Include="ComparacionNodoGrafo.h" />
     <ClInclude Include="ComparacionTuplaKV.h" />
     <ClInclude Include="ComparacionTuplaVV.h" />
@@ -128,6 +133,7 @@
     <ClInclude Include="CPBinaryHeap.h" />
     <ClInclude Include="Dijkstra.h" />
     <ClInclude Include="FuncionCosto.h" />
+    <ClInclude Include="Funciones.h" />
     <ClInclude Include="Grafo.h" />
     <ClInclude Include="GrafoListaAdy.h" />
     <ClInclude Include="HashAbiertoImpl.h" />

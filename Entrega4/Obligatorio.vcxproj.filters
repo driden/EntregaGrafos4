@@ -40,6 +40,12 @@
     <Filter Include="Obligatorio\Tads\Grafo\DIjkstra">
       <UniqueIdentifier>{6b7f5437-2a95-423d-b2c4-96a2c4c6d34d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Obligatorio\Comparaciones">
+      <UniqueIdentifier>{538027f1-ce29-4e53-97f6-2f14e3f82772}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Obligatorio\Funciones Costo">
+      <UniqueIdentifier>{906e8fb2-2cf8-44f7-acc1-92eb5d0345f6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CasoDePrueba.cpp">
@@ -105,6 +111,15 @@
     <ClCompile Include="CostoNat.cpp">
       <Filter>Obligatorio\Tads\Grafo\DIjkstra</Filter>
     </ClCompile>
+    <ClCompile Include="CadenaHash.cpp">
+      <Filter>Obligatorio\Tads\Hash</Filter>
+    </ClCompile>
+    <ClCompile Include="ComparacionCostoMasBarato.cpp">
+      <Filter>Obligatorio\Comparaciones</Filter>
+    </ClCompile>
+    <ClCompile Include="Funciones.cpp">
+      <Filter>Obligatorio\Funciones Costo</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CasoDePrueba.h">
@@ -112,9 +127,6 @@
     </ClInclude>
     <ClInclude Include="Sistema.h">
       <Filter>Obligatorio\Implementacion</Filter>
-    </ClInclude>
-    <ClInclude Include="FuncionCosto.h">
-      <Filter>Obligatorio\Tads</Filter>
     </ClInclude>
     <ClInclude Include="Tabla.h">
       <Filter>Obligatorio\Tads\Hash</Filter>
@@ -187,6 +199,18 @@
     </ClInclude>
     <ClInclude Include="CostoNat.h">
       <Filter>Obligatorio\Tads\Grafo\DIjkstra</Filter>
+    </ClInclude>
+    <ClInclude Include="CadenaHash.h">
+      <Filter>Obligatorio\Tads\Hash</Filter>
+    </ClInclude>
+    <ClInclude Include="FuncionCosto.h">
+      <Filter>Obligatorio\Funciones Costo</Filter>
+    </ClInclude>
+    <ClInclude Include="ComparacionCostoMasBarato.h">
+      <Filter>Obligatorio\Comparaciones</Filter>
+    </ClInclude>
+    <ClInclude Include="Funciones.h">
+      <Filter>Obligatorio\Funciones Costo</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -1,6 +1,15 @@
 #include "CostoArco.h"
 
 
+CostoArco::CostoArco()
+{
+	aviones = INFINITO;
+	omnibuses = INFINITO;
+	this->costo = INFINITO;
+	this->tiempo = INFINITO;
+	this->paradas = INFINITO;
+}
+
 CostoArco::CostoArco(int avion, int bus, int costo, int tiempo, int paradas)
 {
 	aviones = avion;

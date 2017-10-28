@@ -463,9 +463,9 @@ void GrafoListaAdy<V, A>::CargarAristas(Puntero<ColaPrioridadExtendida<Tupla<V, 
 		while (iterNodoGrafo.HayElemento())
 		{
 			NodoGrafo<V, A> nodo = iterNodoGrafo.ElementoActual();
-			nat c = nodo.arista;
+			nat c = costo(nodo.v1,nodo.v2,nodo.arista);
 			Tupla<V, V> t(vO, nodo.v2);
-			pq->InsertarConPrioridad(t, costo(vO, nodo.v2, c));
+			pq->InsertarConPrioridad(t, c);
 			iterNodoGrafo.Avanzar();
 		}
 	}

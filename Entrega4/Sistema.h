@@ -19,7 +19,7 @@ public:
 	~Sistema();
 	template <class V, class A>
 	Tupla<TipoRetorno, Puntero<Grafo<V, A>>> CrearGrafo(nat maxVertices, Puntero<FuncionHash<V>>, const Comparador<V>& comp);
-	
+
 	// Ejercicio 2: Grafo Ciudades
 
 	TipoRetorno AltaCiudad(const Cadena &ciudadNombre);
@@ -32,7 +32,9 @@ public:
 	Tupla<TipoRetorno, Iterador<Cadena>> CaminoMenosParadasIntermedias(const Cadena &ciudadOrigen, const Cadena &ciudadDestino);
 	Tupla<TipoRetorno, Iterador<Cadena>> CaminoMasBaratoOminbus(const Cadena &ciudadOrigen, const Cadena &ciudadDestino);
 private:
-	Puntero<Grafo<Cadena, Tupla<nat, nat>>> grafo;
+	Puntero<Grafo<Cadena, Tupla<TipoTransporte, nat, nat, nat>>> grafo;
+	nat max_ciudades;
+	Puntero<FuncionHash<Cadena>> fHashCadena;
 };
 
 #include "SistemaTemplates.cpp"
