@@ -1,7 +1,9 @@
 #pragma once
 #include "Sistema.h"
 
+#ifndef INFINITO
 #define INFINITO 100000
+#endif
 class CostoArco
 {
 public:

@@ -35,6 +35,7 @@ public:
 	bool ExisteArco(const V& v1, const V& v2) const override;
 	bool EstaLleno() const override;
 	bool EstaVacio() const override;
+	bool HayCaminoAux(Array<bool> conocidos, const V& vO, const V& vD) const;
 
 
 	bool HayCamino(const V& vO, const V& vD) const override;
