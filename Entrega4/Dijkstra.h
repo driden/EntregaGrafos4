@@ -34,7 +34,7 @@ public:
 	}
 	~Dijkstra(){}
 
-	void CaminoMasCorto(V origen, V destino);
+	Iterador<V> CaminoMasCorto(V origen, V destino);
 
 private:
 	Array<TablaAlgoritmo<V, Costo>> tabla;
@@ -45,7 +45,8 @@ private:
 	Puntero<FuncionHash<V>> fHash;
 
 	void InicializarTabla(V origen);
+	void AlgoritmoDijkstra(V origen);
 };
 
-
+#include "Dijkstra.cpp"
 

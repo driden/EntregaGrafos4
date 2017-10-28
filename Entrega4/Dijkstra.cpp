@@ -19,7 +19,7 @@ TablaAlgoritmo<V, Costo>::TablaAlgoritmo()
 }
 
 template <class V, class A, class Costo>
-void Dijkstra<V,A, Costo>::InicializarTabla(V origen)
+void Dijkstra<V, A, Costo>::InicializarTabla(V origen)
 {
 	tabla = Array<TablaAlgoritmo<V, Costo>>(grafo->CantidadVertices());
 	Costo costo = Costo();
@@ -30,7 +30,7 @@ void Dijkstra<V,A, Costo>::InicializarTabla(V origen)
 
 
 template <class V, class A, class Costo>
-void Dijkstra<V, A, Costo>::CaminoMasCorto(V origen, V destino)
+void Dijkstra<V, A, Costo>::AlgoritmoDijkstra(V origen)
 {
 	Puntero<ColaPrioridadExtendida<V, Costo>> pq = new CPBinaryHeap<V, Costo>(compVertice, compCosto, fHash);
 	Costo costo = Costo();
@@ -58,10 +58,10 @@ void Dijkstra<V, A, Costo>::CaminoMasCorto(V origen, V destino)
 			int actual = grafo->GetPosVertice(vActual);
 			int ady = grafo->GetPosVertice(w);
 			Costo costoEntrevertices = CalcularCosto(grafo, actual, ady);
-			
+
 
 			//Usar comparador
-			if (tabla[posW].costo > tabla[posicion].costo + costoEntrevertices)
+			if (compCosto.EsMayor(tabla[posW].costo, tabla[posicion].costo + costoEntrevertices))
 			{
 				tabla[posW].costo = tabla[posicion].costo + costoEntrevertices;
 				tabla[posW].vengo = vActual;
@@ -70,6 +70,33 @@ void Dijkstra<V, A, Costo>::CaminoMasCorto(V origen, V destino)
 			pq->InsertarConPrioridad(w, costoEntrevertices);
 		}
 	}
+}
+
+template <class V, class A, class Costo>
+Iterador<V> Dijkstra<V, A, Costo>::CaminoMasCorto(V origen, V destino)
+{
+	AlgoritmoDijkstra(origen);
+
+	nat posDes = grafo->GetPosVertice(destino);
+
+	assert(tabla[posDes].conocido);
+
+	Array<V> caminoInvertido(grafo->CantidadVertices());
+	caminoInvertido[0] = destino;
+	int tope = 1;
+	
+	for(;tope<caminoInvertido.Largo -1; tope++)
+	{
+		V vVengo = tabla[tope].vengo;
+		caminoInvertido[tope] = vVengo;
+		if (compVertice.SonIguales(origen, vVengo)) break;
+	}
+
+	Array<V> caminoMasCorto(tope + 1);
+
+	for (int i = 0; i < caminoMasCorto.Largo; i++)
+		caminoMasCorto[i] = caminoInvertido[tope - i];
+	return caminoInvertido.ObtenerIterador();
 }
 
 

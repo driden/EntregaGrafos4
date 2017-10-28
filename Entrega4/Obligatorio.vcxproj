@@ -96,11 +96,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CasoDePrueba.cpp" />
-    <ClCompile Include="ComparacionCosto.cpp" />
     <ClCompile Include="ComparacionNodoGrafo.cpp" />
     <ClCompile Include="ComparacionTuplaKV.cpp" />
     <ClCompile Include="ComparacionTuplaVV.cpp" />
+    <ClCompile Include="CostoArco.cpp" />
+    <ClCompile Include="CostoNat.cpp" />
     <ClCompile Include="CPBinaryHeap.cpp" />
+    <ClCompile Include="Dijkstra.cpp" />
     <ClCompile Include="GrafoListaAdy.cpp" />
     <ClCompile Include="HashAbiertoImpl.cpp" />
     <ClCompile Include="HashCerradoImpl.cpp" />
@@ -118,11 +120,13 @@
   <ItemGroup>
     <ClInclude Include="CasoDePrueba.h" />
     <ClInclude Include="ColaPrioridadExtendida.h" />
-    <ClInclude Include="ComparacionCosto.h" />
     <ClInclude Include="ComparacionNodoGrafo.h" />
     <ClInclude Include="ComparacionTuplaKV.h" />
     <ClInclude Include="ComparacionTuplaVV.h" />
+    <ClInclude Include="CostoArco.h" />
+    <ClInclude Include="CostoNat.h" />
     <ClInclude Include="CPBinaryHeap.h" />
+    <ClInclude Include="Dijkstra.h" />
     <ClInclude Include="FuncionCosto.h" />
     <ClInclude Include="Grafo.h" />
     <ClInclude Include="GrafoListaAdy.h" />

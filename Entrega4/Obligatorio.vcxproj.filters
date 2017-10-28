@@ -37,6 +37,9 @@
     <Filter Include="Obligatorio\Tads\PQ Extendida">
       <UniqueIdentifier>{879a7e04-3b7f-439a-b02e-2cad46821036}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Obligatorio\Tads\Grafo\DIjkstra">
+      <UniqueIdentifier>{6b7f5437-2a95-423d-b2c4-96a2c4c6d34d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CasoDePrueba.cpp">
@@ -93,8 +96,14 @@
     <ClCompile Include="ComparacionTuplaVV.cpp">
       <Filter>Obligatorio\Tads\PQ Extendida</Filter>
     </ClCompile>
-    <ClCompile Include="ComparacionCosto.cpp">
-      <Filter>Obligatorio\Implementacion</Filter>
+    <ClCompile Include="CostoArco.cpp">
+      <Filter>Obligatorio\Tads\Grafo\DIjkstra</Filter>
+    </ClCompile>
+    <ClCompile Include="Dijkstra.cpp">
+      <Filter>Obligatorio\Tads\Grafo\DIjkstra</Filter>
+    </ClCompile>
+    <ClCompile Include="CostoNat.cpp">
+      <Filter>Obligatorio\Tads\Grafo\DIjkstra</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -170,8 +179,14 @@
     <ClInclude Include="ComparacionTuplaVV.h">
       <Filter>Obligatorio\Tads\PQ Extendida</Filter>
     </ClInclude>
-    <ClInclude Include="ComparacionCosto.h">
-      <Filter>Obligatorio\Implementacion</Filter>
+    <ClInclude Include="CostoArco.h">
+      <Filter>Obligatorio\Tads\Grafo\DIjkstra</Filter>
+    </ClInclude>
+    <ClInclude Include="Dijkstra.h">
+      <Filter>Obligatorio\Tads\Grafo\DIjkstra</Filter>
+    </ClInclude>
+    <ClInclude Include="CostoNat.h">
+      <Filter>Obligatorio\Tads\Grafo\DIjkstra</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
