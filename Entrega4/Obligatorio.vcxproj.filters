@@ -126,6 +126,18 @@
     <ClCompile Include="ComparacionCiudades.cpp">
       <Filter>Obligatorio\Comparaciones</Filter>
     </ClCompile>
+    <ClCompile Include="ComparacionOmnibus.cpp">
+      <Filter>Obligatorio\Comparaciones</Filter>
+    </ClCompile>
+    <ClCompile Include="ComparacionAviones.cpp">
+      <Filter>Obligatorio\Comparaciones</Filter>
+    </ClCompile>
+    <ClCompile Include="ComparacionParadas.cpp">
+      <Filter>Obligatorio\Comparaciones</Filter>
+    </ClCompile>
+    <ClCompile Include="ComparacionBaratoOmnibus.cpp">
+      <Filter>Obligatorio\Comparaciones</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CasoDePrueba.h">
@@ -222,6 +234,18 @@
       <Filter>Obligatorio\Comparaciones</Filter>
     </ClInclude>
     <ClInclude Include="ComparacionCiudades.h">
+      <Filter>Obligatorio\Comparaciones</Filter>
+    </ClInclude>
+    <ClInclude Include="ComparacionOmnibus.h">
+      <Filter>Obligatorio\Comparaciones</Filter>
+    </ClInclude>
+    <ClInclude Include="ComparacionAviones.h">
+      <Filter>Obligatorio\Comparaciones</Filter>
+    </ClInclude>
+    <ClInclude Include="ComparacionParadas.h">
+      <Filter>Obligatorio\Comparaciones</Filter>
+    </ClInclude>
+    <ClInclude Include="ComparacionBaratoOmnibus.h">
       <Filter>Obligatorio\Comparaciones</Filter>
     </ClInclude>
   </ItemGroup>

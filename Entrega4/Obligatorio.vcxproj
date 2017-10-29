@@ -97,9 +97,13 @@
   <ItemGroup>
     <ClCompile Include="CadenaHash.cpp" />
     <ClCompile Include="CasoDePrueba.cpp" />
+    <ClCompile Include="ComparacionAviones.cpp" />
+    <ClCompile Include="ComparacionBaratoOmnibus.cpp" />
     <ClCompile Include="ComparacionCiudades.cpp" />
     <ClCompile Include="ComparacionCostoMasBarato.cpp" />
     <ClCompile Include="ComparacionNodoGrafo.cpp" />
+    <ClCompile Include="ComparacionOmnibus.cpp" />
+    <ClCompile Include="ComparacionParadas.cpp" />
     <ClCompile Include="ComparacionTiempo.cpp" />
     <ClCompile Include="ComparacionTuplaKV.cpp" />
     <ClCompile Include="ComparacionTuplaVV.cpp" />
@@ -126,9 +130,13 @@
     <ClInclude Include="CadenaHash.h" />
     <ClInclude Include="CasoDePrueba.h" />
     <ClInclude Include="ColaPrioridadExtendida.h" />
+    <ClInclude Include="ComparacionAviones.h" />
+    <ClInclude Include="ComparacionBaratoOmnibus.h" />
     <ClInclude Include="ComparacionCiudades.h" />
     <ClInclude Include="ComparacionCostoMasBarato.h" />
     <ClInclude Include="ComparacionNodoGrafo.h" />
+    <ClInclude Include="ComparacionOmnibus.h" />
+    <ClInclude Include="ComparacionParadas.h" />
     <ClInclude Include="ComparacionTiempo.h" />
     <ClInclude Include="ComparacionTuplaKV.h" />
     <ClInclude Include="ComparacionTuplaVV.h" />

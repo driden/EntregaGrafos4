@@ -8,7 +8,7 @@ class CostoArco
 {
 public:
 	CostoArco();
-	CostoArco(int avion,int bus, int costo, int tiempo, int paradas);
+	CostoArco(int avion,int bus, int costo, int tiempo, int paradas,int ciudades);
 	~CostoArco();
 
 	static CostoArco Cero();
@@ -17,11 +17,11 @@ public:
 
 	CostoArco operator+(const CostoArco& c) const
 	{
-		CostoArco ret(aviones + c.aviones, omnibuses + c.omnibuses, costo + c.costo, tiempo + c.tiempo, paradas + c.paradas);
+		CostoArco ret(aviones + c.aviones, omnibuses + c.omnibuses, costo + c.costo, tiempo + c.tiempo, paradas + c.paradas,ciudades+1);
 		return ret;
 	}
 	
-	int costo, tiempo, paradas,aviones,omnibuses;
+	int costo, tiempo, paradas,aviones,omnibuses, ciudades;
 	
 };
 

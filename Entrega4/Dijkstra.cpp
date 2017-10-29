@@ -80,27 +80,28 @@ Iterador<V> Dijkstra<V, A, Costo>::CaminoMasCorto(V origen, V destino)
 
 	assert(tabla[posDes].conocido);
 
-	Array<V> caminoInvertido(grafo->CantidadVertices());
-	
 	Puntero<Lista<V>> listaCamino = new ListaEncadenada<V>(compVertice);
-	
+
 	listaCamino->Insertar(destino);
 
 	V vVengo = tabla[posDes].vengo;
-	while (compVertice.SonDistintos(origen,vVengo))
+	nat ciudades = 0;
+	while (compVertice.SonDistintos(origen, vVengo))
 	{
 		vVengo = tabla[posDes].vengo;
 		listaCamino->Insertar(vVengo);
 		posDes = grafo->GetPosVertice(vVengo);
+		ciudades++;
 	}
-	
-	//listaCamino->Insertar(origen);
+	if (ciudades == 0)
+		listaCamino->Insertar(origen);
+
 	nat largo = listaCamino->Largo();
 	Array<V> arr(largo);
 	Iterador<V> iter = listaCamino->ObtenerIterador();
-	for(nat i = 0; i < largo; i++)
+	for (nat i = 0; i < largo; i++)
 	{
-		arr[largo - i -1] = iter.ElementoActual(); 
+		arr[largo - i - 1] = iter.ElementoActual();
 		iter.Avanzar();
 	}
 	return arr.ObtenerIterador();
