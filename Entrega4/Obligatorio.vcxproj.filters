@@ -120,6 +120,12 @@
     <ClCompile Include="Funciones.cpp">
       <Filter>Obligatorio\Funciones Costo</Filter>
     </ClCompile>
+    <ClCompile Include="ComparacionTiempo.cpp">
+      <Filter>Obligatorio\Comparaciones</Filter>
+    </ClCompile>
+    <ClCompile Include="ComparacionCiudades.cpp">
+      <Filter>Obligatorio\Comparaciones</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CasoDePrueba.h">
@@ -211,6 +217,12 @@
     </ClInclude>
     <ClInclude Include="Funciones.h">
       <Filter>Obligatorio\Funciones Costo</Filter>
+    </ClInclude>
+    <ClInclude Include="ComparacionTiempo.h">
+      <Filter>Obligatorio\Comparaciones</Filter>
+    </ClInclude>
+    <ClInclude Include="ComparacionCiudades.h">
+      <Filter>Obligatorio\Comparaciones</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

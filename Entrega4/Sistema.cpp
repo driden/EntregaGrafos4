@@ -1,11 +1,11 @@
-﻿
-#ifndef SISTEMA_CPP
+﻿#ifndef SISTEMA_CPP
 #define SISTEMA_CPP
 
 #include "Sistema.h"
 #include "GrafoListaAdy.h"
 #include "CadenaHash.h"
-
+#include "ComparacionTiempo.h"
+#include "ComparacionCiudades.h"
 #include "ComparacionCostoMasBarato.h"
 #include "Funciones.h"
 
@@ -55,16 +55,6 @@ Tupla<TipoRetorno, Iterador<Cadena>> Sistema::CaminoMasBarato(const Cadena &ciud
 
 	Puntero<Comparacion<CostoArco>> comparacion = new ComparacionCostoMasBarato();
 	Comparador<CostoArco> comparador(comparacion);
-
-	/*Dijkstra(
-		Puntero <Grafo<V, A>> g,
-		Comparador<Costo> c,
-		Comparador<V> cv,
-		Puntero<FuncionHash<V>> funcHash,
-		Costo(*fCosto)(Puntero <Grafo<V, Costo>>, int, int)
-	)*/
-	int vO = grafo->GetPosVertice(ciudadOrigen);
-	int vD = grafo->GetPosVertice(ciudadDestino);
 	
 	Dijkstra<Cadena, Tupla<TipoTransporte, nat, nat, nat>, CostoArco>
 		dijkstra(
@@ -75,11 +65,35 @@ Tupla<TipoRetorno, Iterador<Cadena>> Sistema::CaminoMasBarato(const Cadena &ciud
 }
 Tupla<TipoRetorno, Iterador<Cadena>> Sistema::CaminoMenorTiempo(const Cadena &ciudadOrigen, const Cadena &ciudadDestino)
 {
-	return Tupla<TipoRetorno, Iterador<Cadena>>(NO_IMPLEMENTADA, nullptr);
+	if (!grafo->ExisteVertice(ciudadOrigen)) return Tupla<TipoRetorno, Iterador<Cadena>>(ERROR, nullptr);
+	if (!grafo->ExisteVertice(ciudadDestino)) return Tupla<TipoRetorno, Iterador<Cadena>>(ERROR, nullptr);
+	if (!grafo->HayCamino(ciudadOrigen, ciudadDestino)) return Tupla<TipoRetorno, Iterador<Cadena>>(ERROR, nullptr);
+
+	Puntero<Comparacion<CostoArco>> comparacion = new ComparacionTiempo();
+	Comparador<CostoArco> comparador(comparacion);
+
+	Dijkstra<Cadena, Tupla<TipoTransporte, nat, nat, nat>, CostoArco>
+		dijkstra(
+			grafo,
+			comparador, Comparador<Cadena>::Default, fHashCadena, &CalcularCostoArco);
+
+	return Tupla<TipoRetorno, Iterador<Cadena>>(OK, dijkstra.CaminoMasCorto(ciudadOrigen, ciudadDestino));
 }
 Tupla<TipoRetorno, Iterador<Cadena>> Sistema::CaminoMenosCiudades(const Cadena &ciudadOrigen, const Cadena &ciudadDestino)
 {
-	return Tupla<TipoRetorno, Iterador<Cadena>>(NO_IMPLEMENTADA, nullptr);
+	if (!grafo->ExisteVertice(ciudadOrigen)) return Tupla<TipoRetorno, Iterador<Cadena>>(ERROR, nullptr);
+	if (!grafo->ExisteVertice(ciudadDestino)) return Tupla<TipoRetorno, Iterador<Cadena>>(ERROR, nullptr);
+	if (!grafo->HayCamino(ciudadOrigen, ciudadDestino)) return Tupla<TipoRetorno, Iterador<Cadena>>(ERROR, nullptr);
+
+	Puntero<Comparacion<CostoArco>> comparacion = new ComparacionCiudades();
+	Comparador<CostoArco> comparador(comparacion);
+
+	Dijkstra<Cadena, Tupla<TipoTransporte, nat, nat, nat>, CostoArco>
+		dijkstra(
+			grafo,
+			comparador, Comparador<Cadena>::Default, fHashCadena, &CalcularCostoArco);
+
+	return Tupla<TipoRetorno, Iterador<Cadena>>(OK, dijkstra.CaminoMasCorto(ciudadOrigen, ciudadDestino));
 }
 Tupla<TipoRetorno, Iterador<Cadena>> Sistema::CaminoMenosTrayectosOmnibus(const Cadena &ciudadOrigen, const Cadena &ciudadDestino)
 {

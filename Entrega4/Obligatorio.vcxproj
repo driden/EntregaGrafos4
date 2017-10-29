@@ -97,8 +97,10 @@
   <ItemGroup>
     <ClCompile Include="CadenaHash.cpp" />
     <ClCompile Include="CasoDePrueba.cpp" />
+    <ClCompile Include="ComparacionCiudades.cpp" />
     <ClCompile Include="ComparacionCostoMasBarato.cpp" />
     <ClCompile Include="ComparacionNodoGrafo.cpp" />
+    <ClCompile Include="ComparacionTiempo.cpp" />
     <ClCompile Include="ComparacionTuplaKV.cpp" />
     <ClCompile Include="ComparacionTuplaVV.cpp" />
     <ClCompile Include="CostoArco.cpp" />
@@ -124,8 +126,10 @@
     <ClInclude Include="CadenaHash.h" />
     <ClInclude Include="CasoDePrueba.h" />
     <ClInclude Include="ColaPrioridadExtendida.h" />
+    <ClInclude Include="ComparacionCiudades.h" />
     <ClInclude Include="ComparacionCostoMasBarato.h" />
     <ClInclude Include="ComparacionNodoGrafo.h" />
+    <ClInclude Include="ComparacionTiempo.h" />
     <ClInclude Include="ComparacionTuplaKV.h" />
     <ClInclude Include="ComparacionTuplaVV.h" />
     <ClInclude Include="CostoArco.h" />
